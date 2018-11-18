@@ -41,7 +41,7 @@ public class Api {
 	@RequestMapping("/customers")
 	public List<Customer> findAll() {
 		logger.info("Customer.findAll()");
-		System.out.println("Customer Service");
+		System.out.println("Customer Service Load Balance");
 		return customers;
 	}
 	

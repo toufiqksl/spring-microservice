@@ -38,7 +38,7 @@ public class Api {
 	@RequestMapping("/accounts/customer/{customer}")
 	public List<Account> findByCustomer(@PathVariable("customer") Integer customerId) {
 		logger.info(String.format("Account.findByCustomer(%s)", customerId));
-		System.out.println("Account Service");
+		System.out.println("Account Service Replication");
 		return accounts.stream().filter(it -> it.getCustomerId().intValue()==customerId.intValue()).collect(Collectors.toList());
 	}
 	

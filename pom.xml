@@ -21,8 +21,10 @@
 	<modules>
 		<module>discovery-service</module>
 		<module>account-service</module>
+		<module>account-service-replication</module>
 		<module>gateway-service</module>
 		<module>customer-service</module>
+		<module>customer-service-replication</module>
 		<module>zipkin-service</module>
 	</modules>
 
