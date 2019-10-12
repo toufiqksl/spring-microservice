@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.toufiq.microservices.customer.intercomm.AccountClient;
 import com.toufiq.microservices.customer.model.Account;
 import com.toufiq.microservices.customer.model.Customer;
@@ -45,6 +46,7 @@ public class Api {
 		return customers;
 	}
 	
+	@HystrixCommand(fallbackMethod = "findByIdFallback")
 	@RequestMapping("/customers/{id}")
 	public Customer findById(@PathVariable("id") Integer id) {
 		logger.info(String.format("Customer.findById(%s)", id));
@@ -52,6 +54,11 @@ public class Api {
 		List<Account> accounts =  accountClient.getAccounts(id);
 		customer.setAccounts(accounts);
 		return customer;
+	}
+	
+	public Customer findByIdFallback(@PathVariable("id") Integer id) {
+		logger.info(String.format("Customer.findByIdFallback(%s)", id));
+		return customers.get(0);
 	}
 	
 }
