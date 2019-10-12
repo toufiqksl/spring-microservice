@@ -26,6 +26,7 @@
 		<module>customer-service</module>
 		<module>customer-service-replication</module>
 		<module>zipkin-service</module>
+		<module>auth-service</module>
 	</modules>
 
 </project>

@@ -10,14 +10,19 @@ endpoints:
     sensitive: false
 
 zuul:
-  prefix: /api
+  #prefix: /api
   routes:
     account: 
       path: /account/**
       serviceId: account-service
     customer: 
       path: /customer/**
-      serviceId: customer-service          
+      serviceId: customer-service
+    auth: 
+      path: /auth/**
+      serviceId: auth-service
+      strip-prefix: false  
+      sensitive-headers: Cookie,Set-Cookie                  
 
 ribbon:
   eureka:
