@@ -22,7 +22,16 @@ zuul:
       path: /auth/**
       serviceId: auth-service
       strip-prefix: false  
-      sensitive-headers: Cookie,Set-Cookie                  
+      sensitive-headers: Cookie,Set-Cookie 
+      
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 60000                       
 
 ribbon:
   eureka:
